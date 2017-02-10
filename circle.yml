@@ -1,6 +1,7 @@
-machine:
-  environment:
-    TEST_REPORT_JUNIT_XML_OUTPUT_DIR: $CIRCLE_TEST_REPORTS/lein
-dependencies:
+test:
+  pre:
+    - mkdir $CIRCLE_TEST_REPORTS/lein
   override:
-    - lein with-profiles default,test deps
+    - lein test2junit:
+        environment:
+          TEST2JUNIT_OUTPUT_DIR: $CIRCLE_TEST_REPORTS/lein
