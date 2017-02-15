@@ -13,5 +13,23 @@
 (deftest failing
   (is (= 0 1)))
 
+(deftest failing-with-message
+  (is (= 0 1) "Something went horribly wrong"))
+
+(deftest failing-with-context
+  (testing "when testing"
+    (testing "with context"
+      (is (= 0 1)))))
+
+(deftest failing-with-context-and-message
+  (testing "when testing"
+    (testing "with context"
+      (is (= 0 1) "Something went horribly wrong"))))
+
 (deftest erroring
   (is (= 0 (/ 0 0))))
+
+(deftest erroring-with-context
+  (testing "when testing"
+    (testing "with context"
+      (is (= 0 (/ 0 0))))))
